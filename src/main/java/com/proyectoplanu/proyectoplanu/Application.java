@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Application 
+public class Application
 {
     private ArrayList<Activity> activities;
     
@@ -16,15 +16,10 @@ public class Application
         String line = csv.firstLine();
         while (line != null)
         {
-            Activity activity = new Activity();
-            activity.setDate(csv.get_csvField(line, 0));
-            activity.setHour(Float.parseFloat(csv.get_csvField(line, 1)));
-            activity.setNameActivity(csv.get_csvField(line, 2));
-            
-            Manager manager = new Manager();
-            manager.setName(csv.get_csvField(line, 3));
-            activity.setManager(manager);
-            
+            Activity activity = new Activity(csv.get_csvField(line, 0), 
+                                            Float.parseFloat(csv.get_csvField(line, 1)), 
+                                            csv.get_csvField(line, 3),
+                                            new Manager());
             activities.add(activity);
             
             line = csv.nextLine();

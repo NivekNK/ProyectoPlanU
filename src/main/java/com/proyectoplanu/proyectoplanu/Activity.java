@@ -1,32 +1,62 @@
 package com.proyectoplanu.proyectoplanu;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Activity 
 {
+    private static String NAME;
+
     private String date;
     private float hour;
-    private String nameActivity;
+    private String managerRut;
     
-    private ArrayList<Student> students;
-    private Manager manager;
+    private HashMap<String, Student> students;
     
-    public Activity()
+    public Activity(String date, float hour)
     {
-        date = "01-01-2022";
-        hour = 08.00f;
-        nameActivity = "Presentarse";
-        students = new ArrayList();
-        manager = new Manager();
+        this.date = date;
+        this.hour = hour;
+    }
+    
+    public Activity(String name, String date, float hour, String managerRut)
+    {
+        NAME = name;
+        this.date = date;
+        this.hour = hour;
+        this.managerRut = managerRut;
+        students = new HashMap();
+    }
+
+    public void addStudent(Student student)
+    {
+        students.put(student.getRut(), student);
+    }
+    
+    public void removeStudent(Student student)
+    {
+        students.remove(student.getRut());
+    }
+    
+    public void removeStudent(String rut)
+    {
+        students.remove(rut);
+    }
+    
+    // No es un getter
+    public Student getStudent(String rut)
+    {
+        return students.get(rut);
     }
     
     public String getDate() { return date; }
     public float getHour() { return hour; }
-    public String getNameActivity() { return nameActivity; }
-    public Manager getManager() { return manager; }
+    public String getName() { return NAME; }
+    public String getManagerRut() { return managerRut; }
     
-    public void setDate(String date) { this.date = date; } 
+    public void setDate(String date) { this.date = date; }
+    public void setDate(int day, int month, int year) { date = day + "/" + month + "/" + year; }
+    
     public void setHour(float hour) { this.hour = hour; }
-    public void setNameActivity(String nameActivity) { this.nameActivity = nameActivity; }
-    public void setManager(Manager manager) { this.manager = manager; }
+    public void setManagerRut(String managerRut) { this.managerRut = managerRut; }
+    public void setManagerRut(Manager manager) { this.managerRut = manager.getRut(); }
 }
