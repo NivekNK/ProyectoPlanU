@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Activity 
 {
-    private static String NAME;
+    private String name;
 
     private String date;
     private float hour;
@@ -20,7 +20,7 @@ public class Activity
     
     public Activity(String name, String date, float hour, String managerRut)
     {
-        NAME = name;
+        this.name = name;
         this.date = date;
         this.hour = hour;
         this.managerRut = managerRut;
@@ -50,7 +50,7 @@ public class Activity
     
     public String getDate() { return date; }
     public float getHour() { return hour; }
-    public String getName() { return NAME; }
+    public String getName() { return name; }
     public String getManagerRut() { return managerRut; }
     
     public void setDate(String date) { this.date = date; }

@@ -11,12 +11,11 @@ public class Manager
     
     private ArrayList<ActivityKey> managedActivities;
     
-    public Manager(String rut, int age, String name, String job) 
+    public Manager(String rut, int age, String name)
     {
         this.rut = rut;
         this.age = age;
         this.name = name;
-        this.job = job;
         managedActivities = new ArrayList();
     }
     
