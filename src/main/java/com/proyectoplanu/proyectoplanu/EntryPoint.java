@@ -10,4 +10,3 @@ public class EntryPoint
         app.Run();
     }
 }
-

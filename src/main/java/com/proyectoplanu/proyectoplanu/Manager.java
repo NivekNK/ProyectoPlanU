@@ -7,7 +7,6 @@ public class Manager
     private String rut;
     private int age;
     private String name;
-    private String job;
     
     private ArrayList<ActivityKey> managedActivities;
     
@@ -42,11 +41,9 @@ public class Manager
     public ArrayList<ActivityKey> getManagedActivities() { return managedActivities; }
     public int getAge() { return age; }
     public String getName() { return name; }
-    public String getJob() {return job; }
     public String getRut() {return rut; }
     
     public void setAge(int age) { this.age = age; }
     public void setName(String name) { this.name = name; }
-    public void setJob(String job) {this.job = job; }
     public void setRut(String rut) {this.rut = rut; }
 }

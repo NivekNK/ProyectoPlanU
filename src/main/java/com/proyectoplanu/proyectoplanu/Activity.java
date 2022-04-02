@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class Activity 
 {
     private String name;
-
     private String date;
+
     private float hour;
     private String managerRut;
     
@@ -48,14 +48,11 @@ public class Activity
         return students.get(rut);
     }
     
+    public String getName() { return name; }
     public String getDate() { return date; }
     public float getHour() { return hour; }
-    public String getName() { return name; }
     public String getManagerRut() { return managerRut; }
-    
-    public void setDate(String date) { this.date = date; }
-    public void setDate(int day, int month, int year) { date = day + "/" + month + "/" + year; }
-    
+
     public void setHour(float hour) { this.hour = hour; }
     public void setManagerRut(String managerRut) { this.managerRut = managerRut; }
     public void setManagerRut(Manager manager) { this.managerRut = manager.getRut(); }
