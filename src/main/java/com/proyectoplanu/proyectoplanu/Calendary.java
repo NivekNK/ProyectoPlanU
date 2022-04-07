@@ -2,7 +2,7 @@ package com.proyectoplanu.proyectoplanu;
 
 import java.util.HashMap;
 
-public class Calendary 
+public class Calendary
 {
     private HashMap<String, Manager> managers;
     private HashMap<String, Student> students;
@@ -21,12 +21,7 @@ public class Calendary
         
         String managerRut = activity.getManagerRut();
         Manager manager = managers.get(managerRut);
-        if (manager == null)
-        {
-            Student aux = getStudent(managerRut);
-            manager = new Manager(aux.getRut(), aux.getAge(), aux.getName());
-            addManager(manager);
-        } 
+        if (manager == null) return;
 
         manager.addManagedActivity(activity);
     }

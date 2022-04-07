@@ -6,11 +6,24 @@ import java.io.IOException;
 public class Application
 {
     private Calendary calendary;
+    private Menu menu;
     
     public void Run() throws FileNotFoundException, IOException
     {
+        menu = new Menu();
         calendary = new Calendary();
 
+        CSV managers = new CSV("Managers");
+        String managerLine = managers.firstLine();
+        while (managerLine != null)
+        {
+            Manager manager = new Manager(managers.get_csvField(managerLine, 0),
+                                          Integer.parseInt(managers.get_csvField(managerLine, 1)),
+                                          managers.get_csvField(managerLine, 2));
+            calendary.addManager(manager);
+            managerLine = managers.nextLine();
+        }
+        
         CSV students = new CSV("Students");
         String studentLine = students.firstLine();
         while (studentLine != null)
@@ -32,14 +45,16 @@ public class Application
                                              Float.parseFloat(activities.get_csvField(activityLine, 2)),
                                              activities.get_csvField(activityLine, 3));
             calendary.planActivity(activity);
-            
             activityLine = activities.nextLine();
         }
         
         calendary.printCalendary();
         
+        menu.printMenu();
+        menu.option(1, calendary);
+        
         // Test
-        Manager manager = calendary.getManager("20822337-9");
+        Manager manager = calendary.getManager("20369789-8");
         System.out.println("Activities managed by " + manager.getName() + "\n");
         manager.getManagedActivities().forEach(key ->
         {
