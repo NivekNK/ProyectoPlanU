@@ -1,6 +1,7 @@
 package com.proyectoplanu.proyectoplanu;
 
-public abstract class MenuAction
+@FunctionalInterface
+public interface MenuAction
 {
-    public void invoke(Calendary calendary) {}
+    void invoke(Calendary calendary);
 }

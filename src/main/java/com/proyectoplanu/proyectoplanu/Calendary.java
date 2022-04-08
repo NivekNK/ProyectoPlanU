@@ -1,5 +1,6 @@
 package com.proyectoplanu.proyectoplanu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Calendary
@@ -25,23 +26,17 @@ public class Calendary
 
         manager.addManagedActivity(activity);
     }
-
-    public void printCalendary()
-    {
-        System.out.println("---------- All Activities ---------------");
-        activities.getAllActivities().forEach(activity ->
-        {
-            System.out.println("Activity: " + activity.getName());
-            System.out.println("Date: " + activity.getDate());
-            System.out.println("Hour: " + activity.getHour());
-            System.out.println("Manager Rut: " + activity.getManagerRut());
-            System.out.println("-----------------------------------------");
-        });
-    }
+    
+    public ActivityCollection getActivityCollection (){return activities;} 
     
     public Activity getPlanedActivity(ActivityKey activityKey)
     {
         return activities.getActivity(activityKey);
+    }
+    
+    public Activity getPlanedActivity(String name, String date)
+    {
+        return activities.getActivity(new ActivityKey(name, date));
     }
     
     // No es un getter
@@ -84,5 +79,16 @@ public class Calendary
     public void removeStudent(String rut)
     {
         students.remove(rut);
+    }
+    
+    public ArrayList<Student> getStudents()
+    {
+        ArrayList<Student> currentStudents = new ArrayList();
+        students.entrySet().forEach(entry -> 
+        {
+            Student student = entry.getValue();
+            currentStudents.add(student);
+        });
+        return currentStudents;
     }
 }

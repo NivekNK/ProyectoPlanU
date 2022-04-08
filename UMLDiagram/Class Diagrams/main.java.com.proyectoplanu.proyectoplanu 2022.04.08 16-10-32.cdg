@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.proyectoplanu.proyectoplanu">
+  <ClassDiagramComponents>
+    <Class name="Activity" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="hour" type="float" visibility="private"/>
+        <Field name="managerRut" type="String" visibility="private"/>
+        <Field name="students" type="HashMap&lt;String, Student&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="date"/>
+          <Argument type="float" name="hour"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="date"/>
+          <Argument type="float" name="hour"/>
+          <Argument type="String" name="managerRut"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="removeStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="removeStudent" returnType="void" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="getStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getDate" returnType="String" visibility="public"/>
+        <Method name="getHour" returnType="float" visibility="public"/>
+        <Method name="getManagerRut" returnType="String" visibility="public"/>
+        <Method name="getStudents" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+        <Method name="setHour" returnType="void" visibility="public">
+          <Argument type="float" name="hour"/>
+        </Method>
+        <Method name="setManagerRut" returnType="void" visibility="public">
+          <Argument type="String" name="managerRut"/>
+        </Method>
+        <Method name="setManagerRut" returnType="void" visibility="public">
+          <Argument type="Manager" name="manager"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ActivityCollection" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="activitiesByKey" type="HashMap&lt;ActivityKey, Activity&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAllActivities" returnType="ArrayList&lt;Activity&gt;" visibility="public"/>
+        <Method name="getActivity" returnType="Activity" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="getActivity" returnType="Activity" visibility="public">
+          <Argument type="ActivityKey" name="activityKey"/>
+        </Method>
+        <Method name="addActivity" returnType="void" visibility="public">
+          <Argument type="Activity" name="activity"/>
+        </Method>
+        <Method name="removeActivity" returnType="void" visibility="public">
+          <Argument type="Activity" name="activity"/>
+        </Method>
+        <Method name="removeActivity" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="date"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ActivityKey" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="date" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="date"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Application" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="calendary" type="Calendary" visibility="private"/>
+        <Field name="menu" type="Menu" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Calendary" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="managers" type="HashMap&lt;String, Manager&gt;" visibility="private"/>
+        <Field name="students" type="HashMap&lt;String, Student&gt;" visibility="private"/>
+        <Field name="activities" type="ActivityCollection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="planActivity" returnType="void" visibility="public">
+          <Argument type="Activity" name="activity"/>
+        </Method>
+        <Method name="getActivityCollection" returnType="ActivityCollection" visibility="public"/>
+        <Method name="getPlanedActivity" returnType="Activity" visibility="public">
+          <Argument type="ActivityKey" name="activityKey"/>
+        </Method>
+        <Method name="getPlanedActivity" returnType="Activity" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="getManager" returnType="Manager" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="addManager" returnType="void" visibility="public">
+          <Argument type="Manager" name="manager"/>
+        </Method>
+        <Method name="removeManager" returnType="void" visibility="public">
+          <Argument type="Manager" name="manager"/>
+        </Method>
+        <Method name="removeManager" returnType="void" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="getStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="addStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="removeStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="removeStudent" returnType="void" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="getStudents" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CSV" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="file" type="BufferedReader" visibility="private"/>
+        <Field name="currentLine" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="ruta"/>
+          <Argument type="String" name="archivo"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="firstLine" returnType="String" visibility="public"/>
+        <Method name="nextLine" returnType="String" visibility="public"/>
+        <Method name="get_csvField" returnType="String" visibility="public">
+          <Argument type="String" name="line"/>
+          <Argument type="int" name="field"/>
+        </Method>
+        <Method name="get_csvField" returnType="String" visibility="public">
+          <Argument type="int" name="field"/>
+          <Argument type="String" name="line"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EntryPoint" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="arg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Manager" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="rut" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="managedActivities" type="ArrayList&lt;ActivityKey&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="rut"/>
+          <Argument type="int" name="age"/>
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addManagedActivity" returnType="void" visibility="public">
+          <Argument type="Activity" name="activity"/>
+        </Method>
+        <Method name="addManagedActivity" returnType="void" visibility="public">
+          <Argument type="String" name="activityName"/>
+          <Argument type="String" name="activityDate"/>
+        </Method>
+        <Method name="removeActivity" returnType="boolean" visibility="public">
+          <Argument type="Activity" name="activity"/>
+        </Method>
+        <Method name="removeActivity" returnType="boolean" visibility="public">
+          <Argument type="String" name="activityName"/>
+          <Argument type="String" name="activityDate"/>
+        </Method>
+        <Method name="getManagedActivities" returnType="ArrayList&lt;ActivityKey&gt;" visibility="public"/>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getRut" returnType="String" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setRut" returnType="void" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="actions" type="ArrayList&lt;MenuAction&gt;" visibility="private"/>
+        <Field name="input" type="Scanner" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ShowMenu" returnType="boolean" visibility="public">
+          <Argument type="Calendary" name="calendary"/>
+        </Method>
+        <Method name="printMenu" returnType="void" visibility="private"/>
+        <Method name="option" returnType="void" visibility="private">
+          <Argument type="int" name="alternative"/>
+          <Argument type="Calendary" name="calendary"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="MenuAction" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Methods>
+        <Method name="invoke" returnType="void" visibility="package">
+          <Argument type="Calendary" name="calendary"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="Student" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="rut" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="years" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="rut"/>
+          <Argument type="int" name="age"/>
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="years"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRut" returnType="String" visibility="public"/>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getYears" returnType="int" visibility="public"/>
+        <Method name="setRut" returnType="void" visibility="public">
+          <Argument type="String" name="rut"/>
+        </Method>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setYears" returnType="void" visibility="public">
+          <Argument type="int" name="years"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="activities" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="activitiesByKey" source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;ActivityKey, Activity&gt;"/>
+    <HasRelation name="calendary" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Calendary" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="students" source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Student&gt;"/>
+    <HasRelation name="actions" source="com.proyectoplanu.proyectoplanu.Menu" target="com.proyectoplanu.proyectoplanu.MenuAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MenuAction&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Manager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.MenuAction" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Manager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Menu" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menu" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="students" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Student&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="managers" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Manager" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Manager&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="managedActivities" source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.ActivityKey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ActivityKey&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,5 +1,6 @@
 package com.proyectoplanu.proyectoplanu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Activity 
@@ -52,6 +53,16 @@ public class Activity
     public String getDate() { return date; }
     public float getHour() { return hour; }
     public String getManagerRut() { return managerRut; }
+    public ArrayList<Student> getStudents()
+    {
+        ArrayList<Student> currentStudents = new ArrayList();
+        students.entrySet().forEach(entry -> 
+        {
+            Student student = entry.getValue();
+            currentStudents.add(student);
+        });
+        return currentStudents;
+    }
 
     public void setHour(float hour) { this.hour = hour; }
     public void setManagerRut(String managerRut) { this.managerRut = managerRut; }

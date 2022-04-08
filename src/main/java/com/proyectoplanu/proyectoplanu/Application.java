@@ -47,23 +47,11 @@ public class Application
             calendary.planActivity(activity);
             activityLine = activities.nextLine();
         }
-        
-        calendary.printCalendary();
-        
-        menu.printMenu();
-        menu.option(1, calendary);
-        
-        // Test
-        Manager manager = calendary.getManager("20369789-8");
-        System.out.println("Activities managed by " + manager.getName() + "\n");
-        manager.getManagedActivities().forEach(key ->
+
+        boolean exit = false;
+        while (exit == false)
         {
-            Activity activity = calendary.getPlanedActivity(key);
-            System.out.println("Activity: " + activity.getName());
-            System.out.println("Date: " + activity.getDate());
-            System.out.println("Hour: " + activity.getHour());
-            System.out.println("Manager Rut: " + activity.getManagerRut());
-            System.out.println("-                  *                    -");
-        });
+            exit = menu.ShowMenu(calendary);
+        }
     }
 }
