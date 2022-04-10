@@ -99,7 +99,7 @@ public class Menu
         actions.add(5, showStudentsInActivity);
     }
     
-    public boolean ShowMenu(Calendary calendary)
+    public boolean showMenu(Calendary calendary)
     {
         printMenu();
         

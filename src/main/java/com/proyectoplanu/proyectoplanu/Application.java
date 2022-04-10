@@ -51,7 +51,7 @@ public class Application
         boolean exit = false;
         while (exit == false)
         {
-            exit = menu.ShowMenu(calendary);
+            exit = menu.showMenu(calendary);
         }
     }
 }

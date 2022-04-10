@@ -2,7 +2,7 @@
 
 <ClassDiagram name="main.java.com.proyectoplanu.proyectoplanu">
   <ClassDiagramComponents>
-    <Class name="Activity" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="Activity" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="591.0" yPosition="733.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="date" type="String" visibility="private"/>
@@ -51,7 +51,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ActivityCollection" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="ActivityCollection" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="416.0" yPosition="20.0">
       <Fields>
         <Field name="activitiesByKey" type="HashMap&lt;ActivityKey, Activity&gt;" visibility="private"/>
       </Fields>
@@ -79,7 +79,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ActivityKey" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="ActivityKey" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="48.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="date" type="String" visibility="private"/>
@@ -97,7 +97,7 @@
         <Method name="hashCode" returnType="int" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Application" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="Application" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1634.0" yPosition="199.0">
       <Fields>
         <Field name="calendary" type="Calendary" visibility="private"/>
         <Field name="menu" type="Menu" visibility="private"/>
@@ -107,7 +107,7 @@
         <Method name="Run" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Calendary" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="Calendary" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="876.0" yPosition="20.0">
       <Fields>
         <Field name="managers" type="HashMap&lt;String, Manager&gt;" visibility="private"/>
         <Field name="students" type="HashMap&lt;String, Student&gt;" visibility="private"/>
@@ -155,7 +155,7 @@
         <Method name="getStudents" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="CSV" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="CSV" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1844.0" yPosition="133.0">
       <Fields>
         <Field name="file" type="BufferedReader" visibility="private"/>
         <Field name="currentLine" type="String" visibility="private"/>
@@ -184,7 +184,7 @@
         <Method name="close" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="EntryPoint" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="EntryPoint" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1620.0" yPosition="48.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -193,7 +193,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Manager" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="2120.0" yPosition="20.0">
+    <Class name="Manager" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="698.0">
       <Fields>
         <Field name="rut" type="String" visibility="private"/>
         <Field name="age" type="int" visibility="private"/>
@@ -237,7 +237,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Menu" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Class name="Menu" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1578.0" yPosition="511.0">
       <Fields>
         <Field name="actions" type="ArrayList&lt;MenuAction&gt;" visibility="private"/>
         <Field name="input" type="Scanner" visibility="private"/>
@@ -256,14 +256,7 @@
         </Method>
       </Methods>
     </Class>
-    <Interface name="MenuAction" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="320.0" yPosition="420.0">
-      <Methods>
-        <Method name="invoke" returnType="void" visibility="package">
-          <Argument type="Calendary" name="calendary"/>
-        </Method>
-      </Methods>
-    </Interface>
-    <Class name="Student" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="620.0" yPosition="420.0">
+    <Class name="Student" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1107.0" yPosition="698.0">
       <Fields>
         <Field name="rut" type="String" visibility="private"/>
         <Field name="age" type="int" visibility="private"/>
@@ -297,29 +290,36 @@
         </Method>
       </Methods>
     </Class>
+    <Interface name="MenuAction" package="com.proyectoplanu.proyectoplanu" visibility="public" xPosition="1349.0" yPosition="289.0">
+      <Methods>
+        <Method name="invoke" returnType="void" visibility="package">
+          <Argument type="Calendary" name="calendary"/>
+        </Method>
+      </Methods>
+    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="activities" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="activitiesByKey" source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;ActivityKey, Activity&gt;"/>
-    <HasRelation name="calendary" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Calendary" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="students" source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Student&gt;"/>
+    <HasRelation name="menu" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="managers" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Manager" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Manager&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Menu" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="activitiesByKey" source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;ActivityKey, Activity&gt;"/>
     <HasRelation name="actions" source="com.proyectoplanu.proyectoplanu.Menu" target="com.proyectoplanu.proyectoplanu.MenuAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MenuAction&gt;"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Manager" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.MenuAction" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="activities" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Manager" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Menu" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="menu" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.ActivityCollection" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="students" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Student&gt;"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="managers" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Manager" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Manager&gt;"/>
-    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="calendary" source="com.proyectoplanu.proyectoplanu.Application" target="com.proyectoplanu.proyectoplanu.Calendary" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="managedActivities" source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.ActivityKey" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ActivityKey&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityCollection" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Manager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Activity" target="com.proyectoplanu.proyectoplanu.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="students" source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Student&gt;"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Calendary" target="com.proyectoplanu.proyectoplanu.ActivityKey" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.MenuAction" target="com.proyectoplanu.proyectoplanu.Calendary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.proyectoplanu.proyectoplanu.Manager" target="com.proyectoplanu.proyectoplanu.Activity" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
