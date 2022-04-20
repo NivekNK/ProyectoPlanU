@@ -8,11 +8,27 @@ public class Application
     private Calendary calendary;
     private Menu menu;
     
-    public void Run() throws FileNotFoundException, IOException
+    public Application() throws IOException
     {
         menu = new Menu();
         calendary = new Calendary();
-
+        
+        importManagers();
+        importStudents();
+        importActivities();
+    }
+    
+    public void Run()
+    {
+        boolean exit = false;
+        while (exit == false)
+        {
+            exit = menu.showMenu(calendary);
+        }
+    }
+    
+    private void importManagers() throws FileNotFoundException, IOException
+    {
         CSV managers = new CSV("Managers");
         String managerLine = managers.firstLine();
         while (managerLine != null)
@@ -23,7 +39,11 @@ public class Application
             calendary.addManager(manager);
             managerLine = managers.nextLine();
         }
-        
+        managers.close();
+    }
+    
+    private void importStudents() throws FileNotFoundException, IOException
+    {
         CSV students = new CSV("Students");
         String studentLine = students.firstLine();
         while (studentLine != null)
@@ -35,7 +55,11 @@ public class Application
             calendary.addStudent(student);
             studentLine = students.nextLine();
         }
-        
+        students.close();
+    }
+    
+    private void importActivities() throws FileNotFoundException, IOException
+    {
         CSV activities = new CSV("Activities");
         String activityLine = activities.firstLine();
         while (activityLine != null)
@@ -47,11 +71,6 @@ public class Application
             calendary.planActivity(activity);
             activityLine = activities.nextLine();
         }
-
-        boolean exit = false;
-        while (exit == false)
-        {
-            exit = menu.showMenu(calendary);
-        }
+        activities.close();
     }
 }

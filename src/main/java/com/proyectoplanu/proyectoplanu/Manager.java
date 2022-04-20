@@ -20,25 +20,26 @@ public class Manager
     
     public void addManagedActivity(Activity activity)
     {
-        managedActivities.add(new ActivityKey(activity.getName(), activity.getDate()));
+        managedActivities.add(new ActivityKey(activity.getName(), activity.getDate(), activity.getHour()));
     }
     
-    public void addManagedActivity(String activityName, String activityDate)
+    public void addManagedActivity(String activityName, String activityDate, float activityHour)
     {
-        managedActivities.add(new ActivityKey(activityName, activityDate));
+        managedActivities.add(new ActivityKey(activityName, activityDate, activityHour));
     }
     
     public boolean removeActivity(Activity activity)
     {
-        return managedActivities.remove(new ActivityKey(activity.getName(), activity.getDate()));
+        return managedActivities.remove(new ActivityKey(activity.getName(), activity.getDate(), activity.getHour()));
     }
     
-    public boolean removeActivity(String activityName, String activityDate)
+    public boolean removeActivity(String activityName, String activityDate, float hour)
     {
-        return managedActivities.remove(new ActivityKey(activityName, activityDate));
+        return managedActivities.remove(new ActivityKey(activityName, activityDate, hour));
     }
     
     public ArrayList<ActivityKey> getManagedActivities() { return managedActivities; }
+    
     public int getAge() { return age; }
     public String getName() { return name; }
     public String getRut() {return rut; }

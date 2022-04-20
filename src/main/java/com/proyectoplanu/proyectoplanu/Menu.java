@@ -56,6 +56,13 @@ public class Menu
                          + "4.- Mostrar lista de estudiantes\n"
                          + "5.- Mostrar participantes de una actividad\n"
                          + "0.- Salir\n");
+                            // Eliminar Estudiante
+                            // Eliminar Actividad
+                            // Mostrar Estudiante Especifico
+                            // Mostrar Actividad Especifica
+                            // Modificar Fecha y Hora Actividad
+                            // Traspasar Estudiante
+                            // Intercambiar Actividades
     }
 
     private void option(int alternative, Calendary calendary)
@@ -63,7 +70,7 @@ public class Menu
         MenuAction action = actions[alternative - 1];
         action.invoke(calendary);
     }
-    
+// esta parte no nos sirve para interfaces    
     private void addNewActivity(Calendary calendary)
     {
         System.out.println("Ingrese nombre de la actividad: ");
@@ -84,7 +91,7 @@ public class Menu
             if (manager == null)
                 System.out.println("Manager que se ha intentado buscar no existe.");
         }
-
+// esta parte sirve para interfaces
         Activity activity = new Activity(name, date, hour, managerRut);
         calendary.planActivity(activity);
     }
@@ -97,7 +104,9 @@ public class Menu
         String name = input.nextLine();
         System.out.println("Ingrese fecha de la actividad");
         String date = input.nextLine();
-        Activity activity = calendary.getPlanedActivity(name, date);
+        System.out.println("Ingrese hora de la actividad");
+        float hour = Float.parseFloat(input.nextLine());
+        Activity activity = calendary.getPlanedActivity(name, date, hour);
         Student student = calendary.getStudent(rut);
         activity.addStudent(student);
         System.out.println("El estudiante ha sido agregado :3\n");
@@ -132,7 +141,9 @@ public class Menu
         String name = input.nextLine();
         System.out.println("Ingrese fecha de la actividad");
         String date = input.nextLine();
-        Activity activity = calendary.getPlanedActivity(name, date);
+        System.out.println("Ingrese hora de la actividad");
+        float hour = Float.parseFloat(input.nextLine());
+        Activity activity = calendary.getPlanedActivity(name, date, hour);
         
         if (activity == null)
             System.out.println("No existe!");

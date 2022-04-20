@@ -24,9 +24,9 @@ public class ActivityCollection
     }
     
     // No es un getter
-    public Activity getActivity(String name, String date)
+    public Activity getActivity(String name, String date, float hour)
     {
-        return getActivity(new ActivityKey(name, date));
+        return getActivity(new ActivityKey(name, date, hour));
     }
     
     // No es un getter
@@ -37,16 +37,16 @@ public class ActivityCollection
     
     public void addActivity(Activity activity)
     {
-        activitiesByKey.put(new ActivityKey(activity.getName(), activity.getDate()), activity);
+        activitiesByKey.put(new ActivityKey(activity.getName(), activity.getDate(), activity.getHour()), activity);
     }
     
     public void removeActivity(Activity activity)
     {
-        activitiesByKey.remove(new ActivityKey(activity.getName(), activity.getDate()));
+        activitiesByKey.remove(new ActivityKey(activity.getName(), activity.getDate(), activity.getHour()));
     }
     
-    public void removeActivity(String name, String date)
+    public void removeActivity(String name, String date, float hour)
     {
-        activitiesByKey.remove(new ActivityKey(name, date));
+        activitiesByKey.remove(new ActivityKey(name, date, hour));
     }
 }

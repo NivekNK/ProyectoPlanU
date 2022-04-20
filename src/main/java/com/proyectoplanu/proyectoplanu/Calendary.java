@@ -34,9 +34,9 @@ public class Calendary
         return activities.getActivity(activityKey);
     }
     
-    public Activity getPlanedActivity(String name, String date)
+    public Activity getPlanedActivity(String name, String date, float hour)
     {
-        return activities.getActivity(new ActivityKey(name, date));
+        return activities.getActivity(new ActivityKey(name, date, hour));
     }
     
     // No es un getter

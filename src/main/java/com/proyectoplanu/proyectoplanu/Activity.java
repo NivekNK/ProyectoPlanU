@@ -10,7 +10,7 @@ public class Activity
 
     private float hour;
     private String managerRut;
-    
+    //Key students = rut
     private HashMap<String, Student> students;
     
     public Activity(String date, float hour)
