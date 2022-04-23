@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class Activity 
 {
     private String name;
-    private String date;
+    protected String date;
+    protected float hour;
 
-    private float hour;
     private String managerRut;
     //Key students = rut
     private HashMap<String, Student> students;

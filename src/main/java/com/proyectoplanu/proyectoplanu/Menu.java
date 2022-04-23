@@ -12,7 +12,7 @@ public class Menu
     public Menu()
     {
         input = new Scanner(System.in);
-        actions = new MenuAction[5];
+        actions = new MenuAction[6];
         
         MenuAction addNewActivityAction = (calendary) -> addNewActivity(calendary);
         actions[0] = addNewActivityAction;
@@ -29,6 +29,9 @@ public class Menu
         
         MenuAction showStudentsInActivityAction = (calendary) -> showStudentsInActivity(calendary);
         actions[4] = showStudentsInActivityAction;
+        
+        MenuAction modifyDateAndHourAction = (calendary) -> modifyDateAndHour(calendary);
+        actions[5] = modifyDateAndHourAction;
     }
     
     public boolean showMenu(Calendary calendary)
@@ -39,6 +42,12 @@ public class Menu
         int alternative = input.nextInt();
         input.nextLine();
         if (alternative == 0) return true;
+        
+        if (alternative < 0 || alternative > actions.length)
+        {
+            System.out.println("Opcion incorrecta!");
+            return false;
+        }
         
         option(alternative, calendary);
         
@@ -55,14 +64,10 @@ public class Menu
                          + "3.- Mostrar lista de actividades\n"
                          + "4.- Mostrar lista de estudiantes\n"
                          + "5.- Mostrar participantes de una actividad\n"
+                         + "10.- Modificar Fecha y Hora Actividad\n"
                          + "0.- Salir\n");
-                            // Eliminar Estudiante
-                            // Eliminar Actividad
-                            // Mostrar Estudiante Especifico
-                            // Mostrar Actividad Especifica
-                            // Modificar Fecha y Hora Actividad
-                            // Traspasar Estudiante
-                            // Intercambiar Actividades
+                            // TODO: Traspasar Estudiante
+                            // TODO: Intercambiar Actividades
     }
 
     private void option(int alternative, Calendary calendary)
@@ -73,12 +78,25 @@ public class Menu
 // esta parte no nos sirve para interfaces    
     private void addNewActivity(Calendary calendary)
     {
-        System.out.println("Ingrese nombre de la actividad: ");
-        String name = input.nextLine();
-        System.out.println("Ingrese fecha separada por / (EJ: 14/07/2022): ");
-        String date = input.nextLine();
-        System.out.println("Ingrese hora separada por punto (EJ: 10.30): ");
-        float hour = Float.parseFloat(input.nextLine());
+        boolean exists = true;
+        String name = null;
+        String date = null;
+        float hour = 0.0f;
+        
+        while (exists)
+        {
+            System.out.println("Ingrese nombre de la actividad: ");
+            name = input.nextLine();
+            System.out.println("Ingrese fecha separada por / (EJ: 14/07/2022): ");
+            date = input.nextLine();
+            System.out.println("Ingrese hora separada por punto (EJ: 10.30): ");
+            hour = Float.parseFloat(input.nextLine());
+            
+            if (calendary.getPlanedActivity(name, date, hour) == null)
+                exists = false;
+            else
+                System.out.println("Actividad ya planeada!");
+        }
 
         Manager manager = null;
         String managerRut = null;
@@ -98,18 +116,36 @@ public class Menu
     
     private void addStudentToActivity(Calendary calendary)
     {
-        System.out.println("Ingrese rut del estudiante");
-        String rut = input.nextLine();
-        System.out.println("Ingrese nombre de la actividad");
-        String name = input.nextLine();
-        System.out.println("Ingrese fecha de la actividad");
-        String date = input.nextLine();
-        System.out.println("Ingrese hora de la actividad");
-        float hour = Float.parseFloat(input.nextLine());
-        Activity activity = calendary.getPlanedActivity(name, date, hour);
-        Student student = calendary.getStudent(rut);
+        Student student = null;
+        while (student == null)
+        {
+            System.out.println("Ingrese rut del estudiante");
+            String rut = input.nextLine();
+            
+            student = calendary.getStudent(rut);
+            if (student == null)
+            {
+                System.out.println("Estudiante no existe!");
+            }
+        }
+        
+        Activity activity = null;
+        while (activity == null)
+        {
+            System.out.println("Ingrese nombre de la actividad");
+            String name = input.nextLine();
+            System.out.println("Ingrese fecha de la actividad");
+            String date = input.nextLine();
+            System.out.println("Ingrese hora de la actividad");
+            float hour = Float.parseFloat(input.nextLine());
+            
+            activity = calendary.getPlanedActivity(name, date, hour);
+            if (activity == null)
+                System.out.println("Actividad ingresada no existe!");
+        }
+        
         activity.addStudent(student);
-        System.out.println("El estudiante ha sido agregado :3\n");
+        System.out.println("El estudiante ha sido agregado a actividad " + activity.getName() + "\n");
     }
     
     private void showActivities(Calendary calendary)
@@ -131,28 +167,71 @@ public class Menu
         System.out.println("Lista de estudiantes: \n");
         for (Student student : calendary.getStudents())
         {
-            System.out.println(student.getName());
+            System.out.println(student.getName() + " - " + student.getRut());
         }
     }
     
     private void showStudentsInActivity(Calendary calendary)
     {
-        System.out.println("Ingrese nombre de la actividad");
-        String name = input.nextLine();
-        System.out.println("Ingrese fecha de la actividad");
-        String date = input.nextLine();
-        System.out.println("Ingrese hora de la actividad");
-        float hour = Float.parseFloat(input.nextLine());
-        Activity activity = calendary.getPlanedActivity(name, date, hour);
-        
-        if (activity == null)
-            System.out.println("No existe!");
+        Activity activity = null;
+        while (activity == null)
+        {
+            System.out.println("Ingrese nombre de la actividad");
+            String name = input.nextLine();
+            System.out.println("Ingrese fecha de la actividad");
+            String date = input.nextLine();
+            System.out.println("Ingrese hora de la actividad");
+            float hour = Float.parseFloat(input.nextLine());
+            
+            activity = calendary.getPlanedActivity(name, date, hour);
+            if (activity == null)
+                System.out.println("Actividad ingresada no existe!");
+        }
         
         System.out.println("Lista de estudiantes participantes: \n");
         for (Student student : activity.getStudents())
         {
-            System.out.println(student.getName());
+            System.out.println(student.getName() + " - " + student.getRut());
         }
         System.out.println("\n");
+    }
+    
+    private void modifyDateAndHour(Calendary calendary)
+    {
+        Activity activity = null;
+        while (activity == null)
+        {
+            System.out.println("Ingrese nombre de la actividad");
+            String name = input.nextLine();
+            System.out.println("Ingrese fecha de la actividad");
+            String date = input.nextLine();
+            System.out.println("Ingrese hora de la actividad");
+            float hour = Float.parseFloat(input.nextLine());
+            
+            activity = calendary.getPlanedActivity(name, date, hour);
+            if (activity == null)
+                System.out.println("Actividad ingresada no existe!");
+        }
+        
+        Manager manager = calendary.getManager(activity.getManagerRut());
+        manager.removeActivity(activity);
+        
+        calendary.removeActivity(activity);
+        
+        System.out.println("Nuevos datos:\n");
+        
+        System.out.println("Ingrese nueva fecha de la actividad");
+        String date = input.nextLine();
+        System.out.println("Ingrese nueva hora de la actividad");
+        float hour = Float.parseFloat(input.nextLine());
+        
+        Activity newActivity = new Activity(activity.getName(), date, hour, activity.getManagerRut());
+        for (Student student : activity.getStudents())
+        {
+            newActivity.addStudent(student);
+        }
+        manager.addManagedActivity(newActivity);
+        
+        calendary.planActivity(newActivity);
     }
 }

@@ -91,4 +91,14 @@ public class Calendary
         });
         return currentStudents;
     }
+    
+    public void removeActivity(Activity activity)
+    {
+        activities.removeActivity(activity);
+    }
+    
+    public void removeActivity(String name, String date, float hour)
+    {
+        activities.removeActivity(name, date, hour);
+    }
 }
