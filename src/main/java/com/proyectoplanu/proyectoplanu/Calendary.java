@@ -78,6 +78,11 @@ public class Calendary
     
     public void removeStudent(String rut)
     {
+        for (Activity activity : activities.getAllActivities())
+        {
+            activity.removeStudent(rut);
+        }
+        
         students.remove(rut);
     }
     

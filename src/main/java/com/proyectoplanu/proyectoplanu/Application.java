@@ -2,6 +2,7 @@ package com.proyectoplanu.proyectoplanu;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Random;
 
 public class Application
 {
@@ -20,6 +21,21 @@ public class Application
     
     public void Run()
     {
+        // Test Code
+        Random rand = new Random();
+        ActivityCollection collection = calendary.getActivityCollection();
+        for (Activity activity : collection.getAllActivities())
+        {
+            for (Student student : calendary.getStudents())
+            {
+                int randValue = rand.nextInt(100);
+                if (randValue < 50)
+                {
+                    activity.addStudent(student);
+                }
+            }
+        }
+        
         boolean exit = false;
         while (exit == false)
         {
