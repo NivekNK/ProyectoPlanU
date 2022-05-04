@@ -15,7 +15,7 @@ public class Menu
     public Menu()
     {
         input = new Scanner(System.in);
-        actions = new MenuAction[7];
+        actions = new MenuAction[11];
         
         MenuAction addNewActivityAction = (calendary) -> addNewActivity(calendary);
         actions[0] = addNewActivityAction;
@@ -144,7 +144,7 @@ public class Menu
                 System.out.println("Manager que se ha intentado buscar no existe.");
         }
         Activity activity = new Activity(name, date, hour, managerRut);
-        calendary.planActivity(activity);
+        calendary.addActivity(activity);
     }
     
     //------------------------------------ OPCION 2 ---------------------------//
@@ -294,7 +294,7 @@ public class Menu
         Student student = calendary.getStudent(rut);
         System.out.println("Nombre: " + student.getName());
         System.out.println("Edad: " + student.getAge()); 
-        System.out.println("Año: "+ student.getYears());
+        System.out.println("Año: "+ student.getGrade());
     }
     
     //--------------------------- OPCION 9 -----------------------------------//
@@ -321,7 +321,7 @@ public class Menu
         {
             System.out.println("Nombre: " + student.getName());
             System.out.println("Edad: " + student.getAge()); 
-            System.out.println("Año: "+ student.getYears());
+            System.out.println("Año: "+ student.getGrade());
             System.out.println("-----------------------------------------");
         }
     }
@@ -364,7 +364,7 @@ public class Menu
         }
         manager.addManagedActivity(newActivity);
         
-        calendary.planActivity(newActivity);
+        calendary.addActivity(newActivity);
     }
     
     //---------------------------------- OPCION 11 -----------------------------//

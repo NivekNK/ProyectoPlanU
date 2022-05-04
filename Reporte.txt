@@ -1,0 +1,61 @@
+Actividad: Clase de Cocina
+
+Fecha: 10/05/2022
+Hora: 10.0
+Manager: Alba Cerdan | 21654725-6
+
+Asistentes:
+ - Braulio Sanchez | 21658320-9
+ - Israel Badia | 19852221-0
+ - George Berrios | 20658912-5
+ - Vanessa Bravo | 20926481-k
+ - Roman Taboada | 20568913-7
+ - Silvia Herreros | 20846321-7
+ - Jesus Tapia | 19951357-8
+ - Kilian Acosta | 19658745-2
+
+
+Actividad: Limpiar Playa
+
+Fecha: 14/07/2022
+Hora: 9.3
+Manager: Yoel Jimeno | 20369789-8
+
+Asistentes:
+ - Miriam Caro | 19965874-5
+ - Braulio Sanchez | 21658320-9
+ - Vanessa Bravo | 20926481-k
+ - Roman Taboada | 20568913-7
+ - Adam Bustamante | 19523974-1
+ - Antonio Navarro | 20582645-7
+ - Silvia Herreros | 20846321-7
+
+
+Actividad: Hackaton
+
+Fecha: 09/04/2022
+Hora: 18.15
+Manager: Yoel Jimeno | 20369789-8
+
+Asistentes:
+ - Miriam Caro | 19965874-5
+ - Braulio Sanchez | 21658320-9
+ - Israel Badia | 19852221-0
+ - George Berrios | 20658912-5
+ - Antonio Navarro | 20582645-7
+ - Silvia Herreros | 20846321-7
+
+
+Actividad: Noche de Peliculas
+
+Fecha: 01/09/2022
+Hora: 19.3
+Manager: Rafael Acebedo | 20297381-2
+
+Asistentes:
+ - Miriam Caro | 19965874-5
+ - Vanessa Bravo | 20926481-k
+ - Antonio Navarro | 20582645-7
+ - Kilian Acosta | 19658745-2
+
+

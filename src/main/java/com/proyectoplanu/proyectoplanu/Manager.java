@@ -2,12 +2,8 @@ package com.proyectoplanu.proyectoplanu;
 
 import java.util.ArrayList;
 
-public class Manager 
+public class Manager extends Person
 {
-    private String rut;
-    private int age;
-    private String name;
-    
     private ArrayList<ActivityKey> managedActivities;
     
     public Manager(String rut, int age, String name)
@@ -39,12 +35,4 @@ public class Manager
     }
     
     public ArrayList<ActivityKey> getManagedActivities() { return managedActivities; }
-    
-    public int getAge() { return age; }
-    public String getName() { return name; }
-    public String getRut() {return rut; }
-    
-    public void setAge(int age) { this.age = age; }
-    public void setName(String name) { this.name = name; }
-    public void setRut(String rut) {this.rut = rut; }
 }

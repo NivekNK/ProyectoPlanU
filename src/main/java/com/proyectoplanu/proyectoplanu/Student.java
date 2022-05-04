@@ -1,27 +1,18 @@
 package com.proyectoplanu.proyectoplanu;
 
-public class Student 
+public class Student extends Person
 {
-    private String rut;
-    private int age;
-    private String name;
-    private int years;
+    private int grade;
 
-    public Student(String rut, int age, String name, int years)
+    public Student(String rut, int age, String name, int grade)
     {
         this.rut = rut;
         this.age = age;
         this.name = name;
-        this.years = years;
+        this.grade = grade;
     }
     
-    public String getRut() {return rut; }
-    public int getAge() { return age; }
-    public String getName() { return name; }
-    public int getYears() { return years; }
+    public int getGrade() { return grade; }
     
-    public void setRut(String rut) {this.rut = rut; }
-    public void setAge(int age) { this.age = age; }
-    public void setName(String name) { this.name = name; }
-    public void setYears(int years) {this.years = years; }
+    public void setGrade(int grade) {this.grade = grade; }
 }

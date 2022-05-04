@@ -84,7 +84,7 @@ public class Application
                                              activities.get_csvField(activityLine, 1),
                                              Float.parseFloat(activities.get_csvField(activityLine, 2)),
                                              activities.get_csvField(activityLine, 3));
-            calendary.planActivity(activity);
+            calendary.addActivity(activity);
             activityLine = activities.nextLine();
         }
         activities.close();

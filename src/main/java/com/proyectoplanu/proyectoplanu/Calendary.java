@@ -16,7 +16,7 @@ public class Calendary
         activities = new ActivityCollection();
     }
     
-    public void planActivity(Activity activity)
+    public void addActivity(Activity activity)
     {
         activities.addActivity(activity);
         
