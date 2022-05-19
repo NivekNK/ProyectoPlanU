@@ -3,19 +3,20 @@ package com.proyectoplanu.proyectoplanu;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Aun no se realiza ninguna comprobacion de lectura de datos
 public class Menu
 {
     private MenuAction[] actions;
-
+    
     private Scanner input;
     
     public Menu()
     {
         input = new Scanner(System.in);
-        actions = new MenuAction[11];
+        actions = new MenuAction[13];
         
         MenuAction addNewActivityAction = (calendary) -> addNewActivity(calendary);
         actions[0] = addNewActivityAction;
@@ -48,6 +49,12 @@ public class Menu
         MenuAction modifyDateAndHourAction = (calendary) -> modifyDateAndHour(calendary);
         actions[9] = modifyDateAndHourAction;
         
+        MenuAction showStudentAttendsTheMostAction = (calendary) -> showStudentAttendsTheMost(calendary);
+        actions[10] = showStudentAttendsTheMostAction;
+
+        MenuAction showActivitiesBetweenTwoDatesAction = (calendary) -> showActivitiesBetweenTwoDates(calendary);
+        actions[11] = showActivitiesBetweenTwoDatesAction;
+        
         MenuAction generateReportAction = (calendary) -> {
             try
             {
@@ -58,7 +65,7 @@ public class Menu
                System.out.println("No puede generar el reporte!");
             }
         };
-        actions[10] = generateReportAction;
+        actions[12] = generateReportAction;
     }
     
     public boolean showMenu(Calendary calendary)
@@ -86,18 +93,20 @@ public class Menu
         System.out.println("Menú sistema de Actividades\n"
                          + "\n"
                          + "Ingrese la opción que quiera realizar:\n"
-                         + "1.- Agregar actividad nueva\n"
-                         + "2.- Agregar estudiante a una actividad\n"
-                         + "3.- Mostrar lista de actividades\n"
-                         + "4.- Mostrar lista de estudiantes\n"
-                         + "5.- Mostrar participantes de una actividad\n"
-                         + "6.- Eliminar Estudiante\n"
-                         + "7.- Eliminar Actividad\n"
-                         + "8.- Mostrar Estudiante Especifico\n"
-                         + "9.- Mostrar Actividad Especifica\n"
+                         + " 1.- Agregar actividad nueva\n"
+                         + " 2.- Agregar estudiante a una actividad\n"
+                         + " 3.- Mostrar lista de actividades\n"
+                         + " 4.- Mostrar lista de estudiantes\n"
+                         + " 5.- Mostrar participantes de una actividad\n"
+                         + " 6.- Eliminar Estudiante\n"
+                         + " 7.- Eliminar Actividad\n"
+                         + " 8.- Mostrar Estudiante Especifico\n"
+                         + " 9.- Mostrar Actividad Especifica\n"
                          + "10.- Modificar Fecha y Hora Actividad\n"
-                         + "11.- Generar reporte\n"
-                         + "0.- Salir\n");
+                         + "11.- Mostrar Estudiante que mas asiste a actividades\n"
+                         + "12.- Mostrar Actividades entre 2 fechas especificas\n"
+                         + "13.- Generar reporte\n"
+                         + " 0.- Salir\n");
                             // TODO: Traspasar Estudiante
                             // TODO: Intercambiar Actividades
     }
@@ -369,6 +378,89 @@ public class Menu
     
     //---------------------------------- OPCION 11 -----------------------------//
     
+    private void showStudentAttendsTheMost(Calendary calendary)
+    {
+        Student finalStudent = null;
+        int count = 0;
+        ActivityCollection collection = calendary.getActivityCollection();
+        
+        for (Student student : calendary.getStudents())
+        {
+            int auxCount = 0;
+            
+            for (Activity activity : collection.getAllActivities())
+            {
+                if (activity.getStudent(student.getRut()) != null)
+                    auxCount++;
+            }
+            
+            if (auxCount > count)
+            {
+                finalStudent = student;
+                count = auxCount;
+            }
+        }
+        
+        if (count <= 1)
+        {
+            System.out.println("No hay estudiante que asista a mas de una actividad!\n");
+        }
+        else
+        {
+            System.out.println("Nombre: " + finalStudent.getName());
+            System.out.println("Edad: " + finalStudent.getAge()); 
+            System.out.println("Año: "+ finalStudent.getGrade());
+            System.out.println("Asiste a " + count + " actividades.\n");
+        }
+    }
+    
+    //---------------------------------- OPCION 12 -----------------------------//
+    
+    private int[] getDateInfo(String[] dateInfo)
+    {
+        int[] info = new int[dateInfo.length];
+        for (int i = 0; i < dateInfo.length; i++)
+        {
+            info[i] = Integer.parseInt(dateInfo[i]);
+        }
+
+        return info;
+    }
+    
+    private void showActivitiesBetweenTwoDates(Calendary calendary)
+    {
+        System.out.println("Ingrese primera fecha (Ej: 01/07/2022):");
+        String startDate = input.nextLine();
+        System.out.println("Ingrese segunda fecha (Ej: 31/07/2022):");
+        String endDate = input.nextLine();
+        
+        int[] startDateInfo = getDateInfo(startDate.split("/"));
+        int[] endDateInfo = getDateInfo(endDate.split("/"));
+        
+        ActivityCollection collection = calendary.getActivityCollection();
+        for (Activity activity : collection.getAllActivities())
+        {
+            int[] dateInfo = getDateInfo(activity.getDate().split("/"));
+            
+            // Año
+            if (dateInfo[2] < startDateInfo[2] || dateInfo[2] > endDateInfo[2])
+                continue;
+            
+            // Mes
+            if (dateInfo[1] < startDateInfo[1] || dateInfo[1] > endDateInfo[1])
+                continue;
+            
+            // Dia
+            if (dateInfo[0] < startDateInfo[0] || dateInfo[0] > endDateInfo[0])
+                continue;
+            
+            System.out.println(activity.generateReport());
+            System.out.println("-----------------------------------------");
+        }
+    }
+    
+    //---------------------------------- OPCION 13 -----------------------------//
+    
     private void generateReport(Calendary calendary) throws IOException
     {
         File reportFile = null;
@@ -387,24 +479,8 @@ public class Menu
         
         try (FileWriter writer = new FileWriter(reportFile)) 
         {
-            String report = "";
-            ActivityCollection collection = calendary.getActivityCollection();
-            for (Activity activity : collection.getAllActivities())
-            {
-                report += ("Actividad: " + activity.getName() + "\n");
-                report += "\n";
-                report += ("Fecha: " + activity.getDate() + "\n");
-                report += ("Hora: " + activity.getHour() + "\n");
-                Manager manager = calendary.getManager(activity.getManagerRut());
-                report += ("Manager: " + manager.getName() + " | " + manager.getRut() + "\n");
-                report += "\n";
-                report += "Asistentes:\n";
-                for (Student student : activity.getStudents())
-                {
-                    report += (" - " + student.getName() + " | " + student.getRut() + "\n");
-                }
-                report += "\n\n";
-            }
+            ReportGenerator collectionReport = (ReportGenerator)calendary.getActivityCollection();
+            String report = collectionReport.generateReport();
             writer.write(report);
             writer.close();
         }

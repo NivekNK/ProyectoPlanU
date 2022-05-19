@@ -3,7 +3,7 @@ package com.proyectoplanu.proyectoplanu;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Activity 
+public class Activity implements ReportGenerator
 {
     private String name;
     protected String date;
@@ -67,4 +67,17 @@ public class Activity
     public void setHour(float hour) { this.hour = hour; }
     public void setManagerRut(String managerRut) { this.managerRut = managerRut; }
     public void setManagerRut(Manager manager) { this.managerRut = manager.getRut(); }
+
+    @Override
+    public String generateReport() 
+    {
+        String report = "";
+        report += ("Actividad: " + name + "\n");
+        report += "\n";
+        report += ("Fecha: " + date + "\n");
+        report += ("Hora: " + hour + "\n");
+        report += ("Rut Manager: " + managerRut + "\n");
+        
+        return report;
+    }
 }

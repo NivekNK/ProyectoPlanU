@@ -5,14 +5,12 @@ import java.util.HashMap;
 
 public class Calendary
 {
-    private HashMap<String, Manager> managers;
-    private HashMap<String, Student> students;
+    private HashMap<String, Person> persons;
     private ActivityCollection activities;
     
     public Calendary()
     {
-        managers = new HashMap();
-        students = new HashMap();
+        persons = new HashMap();
         activities = new ActivityCollection();
     }
     
@@ -21,10 +19,12 @@ public class Calendary
         activities.addActivity(activity);
         
         String managerRut = activity.getManagerRut();
-        Manager manager = managers.get(managerRut);
-        if (manager == null) return;
-
-        manager.addManagedActivity(activity);
+        Person person = persons.get(managerRut);
+        if (person.getType() == TypeOfPerson.MANAGER)
+        {
+            Manager manager = (Manager)person;
+            manager.addManagedActivity(activity);
+        }
     }
     
     public ActivityCollection getActivityCollection (){return activities;} 
@@ -42,38 +42,46 @@ public class Calendary
     // No es un getter
     public Manager getManager(String rut)
     {
-        return managers.get(rut);
+        Person person = persons.get(rut);
+        if (person.getType() == TypeOfPerson.MANAGER)
+            return (Manager)person;
+        
+        return null;
     }
     
     public void addManager(Manager manager)
     {
-        managers.put(manager.getRut(), manager);
+        persons.put(manager.getRut(), manager);
     }
     
     public void removeManager(Manager manager)
     {
-        managers.remove(manager.getRut());
+        persons.remove(manager.getRut());
     }
     
     public void removeManager(String rut)
     {
-        managers.remove(rut);
+        persons.remove(rut);
     }
     
     // No es un getter
     public Student getStudent(String rut)
     {
-        return students.get(rut);
+        Person person = persons.get(rut);
+        if (person.getType() == TypeOfPerson.STUDENT)
+            return (Student)person;
+            
+        return null;
     }
     
     public void addStudent(Student student)
     {
-        students.put(student.getRut(), student);
+        persons.put(student.getRut(), student);
     }
     
     public void removeStudent(Student student)
     {
-        students.remove(student.getRut());
+        persons.remove(student.getRut());
     }
     
     public void removeStudent(String rut)
@@ -83,16 +91,20 @@ public class Calendary
             activity.removeStudent(rut);
         }
         
-        students.remove(rut);
+        persons.remove(rut);
     }
     
     public ArrayList<Student> getStudents()
     {
         ArrayList<Student> currentStudents = new ArrayList();
-        students.entrySet().forEach(entry -> 
+        persons.entrySet().forEach(entry -> 
         {
-            Student student = entry.getValue();
-            currentStudents.add(student);
+            Person person = entry.getValue();
+            if (person.getType() == TypeOfPerson.STUDENT)
+            {
+                Student student = (Student)person;
+                currentStudents.add(student);
+            }
         });
         return currentStudents;
     }

@@ -2,15 +2,13 @@ package com.proyectoplanu.proyectoplanu;
 
 import java.util.ArrayList;
 
-public class Manager extends Person
+public class Manager extends Person implements ReportGenerator
 {
     private ArrayList<ActivityKey> managedActivities;
     
     public Manager(String rut, int age, String name)
     {
-        this.rut = rut;
-        this.age = age;
-        this.name = name;
+        super(rut, age, name);
         managedActivities = new ArrayList();
     }
     
@@ -35,4 +33,16 @@ public class Manager extends Person
     }
     
     public ArrayList<ActivityKey> getManagedActivities() { return managedActivities; }
+
+    @Override
+    public TypeOfPerson getType()
+    {
+        return TypeOfPerson.MANAGER;
+    }
+
+    @Override
+    public String generateReport() 
+    {
+        return "Manager: " + this.getName() + " | " + this.getRut() + "\n";
+    }
 }

@@ -6,10 +6,12 @@ import java.util.Random;
 
 public class Application
 {
+    private static Application Instance = null; 
+    
     private Calendary calendary;
     private Menu menu;
     
-    public Application() throws IOException
+    private Application() throws IOException
     {
         menu = new Menu();
         calendary = new Calendary();
@@ -17,6 +19,14 @@ public class Application
         importManagers();
         importStudents();
         importActivities();
+    }
+    
+    public static Application getInstance() throws IOException
+    {
+        if (Instance == null)
+            Instance = new Application();
+        
+        return Instance;
     }
     
     public void Run()

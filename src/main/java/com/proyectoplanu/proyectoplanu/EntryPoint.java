@@ -6,7 +6,7 @@ public class EntryPoint
 {
     public static void main(String[] arg) throws IOException
     {
-        Application app = new Application();
+        Application app = Application.getInstance();
         app.Run();
     }
 }
