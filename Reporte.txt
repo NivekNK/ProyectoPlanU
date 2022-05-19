@@ -2,47 +2,41 @@ Actividad: Limpiar Playa
 
 Fecha: 30/07/2022
 Hora: 9.3
-Rut Manager: 20369789-8
+Manager: Yoel Jimeno | 20369789-8
 
 Asistentes:
+ - Miriam Caro | 19965874-5
  - Braulio Sanchez | 21658320-9
- - Israel Badia | 19852221-0
- - Roman Taboada | 20568913-7
+ - Vanessa Bravo | 20926481-k
  - Adam Bustamante | 19523974-1
  - Antonio Navarro | 20582645-7
  - Jesus Tapia | 19951357-8
- - Silvia Herreros | 20846321-7
- - Kilian Acosta | 19658745-2
 
 
 Actividad: Clase de Cocina
 
 Fecha: 10/06/2022
 Hora: 10.0
-Rut Manager: 21654725-6
+Manager: Alba Cerdan | 21654725-6
 
 Asistentes:
- - Israel Badia | 19852221-0
- - George Berrios | 20658912-5
- - Vanessa Bravo | 20926481-k
- - Roman Taboada | 20568913-7
+ - Miriam Caro | 19965874-5
+ - Braulio Sanchez | 21658320-9
  - Adam Bustamante | 19523974-1
  - Antonio Navarro | 20582645-7
- - Silvia Herreros | 20846321-7
+ - Kilian Acosta | 19658745-2
 
 
 Actividad: Noche de Peliculas
 
 Fecha: 01/07/2022
 Hora: 19.3
-Rut Manager: 20297381-2
+Manager: Rafael Acebedo | 20297381-2
 
 Asistentes:
  - Braulio Sanchez | 21658320-9
- - Israel Badia | 19852221-0
- - George Berrios | 20658912-5
- - Vanessa Bravo | 20926481-k
- - Jesus Tapia | 19951357-8
+ - Roman Taboada | 20568913-7
+ - Antonio Navarro | 20582645-7
  - Silvia Herreros | 20846321-7
 
 
@@ -50,16 +44,13 @@ Actividad: Hackaton
 
 Fecha: 09/07/2022
 Hora: 18.15
-Rut Manager: 20369789-8
+Manager: Yoel Jimeno | 20369789-8
 
 Asistentes:
- - Miriam Caro | 19965874-5
  - Braulio Sanchez | 21658320-9
- - Roman Taboada | 20568913-7
+ - Israel Badia | 19852221-0
+ - George Berrios | 20658912-5
  - Adam Bustamante | 19523974-1
- - Antonio Navarro | 20582645-7
- - Jesus Tapia | 19951357-8
- - Silvia Herreros | 20846321-7
  - Kilian Acosta | 19658745-2
 
 

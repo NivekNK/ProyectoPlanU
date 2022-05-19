@@ -90,10 +90,11 @@ public class Application
         String activityLine = activities.firstLine();
         while (activityLine != null)
         {
+            Manager manager = calendary.getManager(activities.get_csvField(activityLine, 3));
             Activity activity = new Activity(activities.get_csvField(activityLine, 0),
                                              activities.get_csvField(activityLine, 1),
                                              Float.parseFloat(activities.get_csvField(activityLine, 2)),
-                                             activities.get_csvField(activityLine, 3));
+                                             manager);
             calendary.addActivity(activity);
             activityLine = activities.nextLine();
         }

@@ -9,7 +9,7 @@ public class Activity implements ReportGenerator
     protected String date;
     protected float hour;
 
-    private String managerRut;
+    private Manager manager;
     //Key students = rut
     private HashMap<String, Student> students;
     
@@ -19,12 +19,12 @@ public class Activity implements ReportGenerator
         this.hour = hour;
     }
     
-    public Activity(String name, String date, float hour, String managerRut)
+    public Activity(String name, String date, float hour, Manager manager)
     {
         this.name = name;
         this.date = date;
         this.hour = hour;
-        this.managerRut = managerRut;
+        this.manager = manager;
         students = new HashMap();
     }
 
@@ -52,7 +52,7 @@ public class Activity implements ReportGenerator
     public String getName() { return name; }
     public String getDate() { return date; }
     public float getHour() { return hour; }
-    public String getManagerRut() { return managerRut; }
+    public Manager getManager() { return manager; }
     public ArrayList<Student> getStudents()
     {
         ArrayList<Student> currentStudents = new ArrayList();
@@ -65,8 +65,7 @@ public class Activity implements ReportGenerator
     }
 
     public void setHour(float hour) { this.hour = hour; }
-    public void setManagerRut(String managerRut) { this.managerRut = managerRut; }
-    public void setManagerRut(Manager manager) { this.managerRut = manager.getRut(); }
+    public void setManager(Manager manager) { this.manager = manager; }
 
     @Override
     public String generateReport() 
@@ -76,7 +75,8 @@ public class Activity implements ReportGenerator
         report += "\n";
         report += ("Fecha: " + date + "\n");
         report += ("Hora: " + hour + "\n");
-        report += ("Rut Manager: " + managerRut + "\n");
+        
+        report += manager.generateReport();
         
         return report;
     }

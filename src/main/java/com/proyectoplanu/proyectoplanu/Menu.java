@@ -3,7 +3,6 @@ package com.proyectoplanu.proyectoplanu;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Aun no se realiza ninguna comprobacion de lectura de datos
@@ -142,17 +141,16 @@ public class Menu
         }
 
         Manager manager = null;
-        String managerRut = null;
         while (manager == null)
         {
             System.out.println("Ingrese rut de manager correcto (EJ: 20410798-K): ");
-            managerRut = input.nextLine();
+            String managerRut = input.nextLine();
             manager = calendary.getManager(managerRut);
 
             if (manager == null)
                 System.out.println("Manager que se ha intentado buscar no existe.");
         }
-        Activity activity = new Activity(name, date, hour, managerRut);
+        Activity activity = new Activity(name, date, hour, manager);
         calendary.addActivity(activity);
     }
     
@@ -203,7 +201,7 @@ public class Menu
             System.out.println("Actividad: " + activity.getName());
             System.out.println("Fecha: " + activity.getDate());
             System.out.println("Hora: " + activity.getHour());
-            System.out.println("Rut del Manager: " + activity.getManagerRut());
+            System.out.println("Rut del Manager: " + activity.getManager());
             System.out.println("-----------------------------------------");
         });
     }
@@ -288,8 +286,10 @@ public class Menu
             }
         }
         
-        Manager manager = calendary.getManager(activity.getManagerRut());
-        manager.removeActivity(activity);
+        Manager manager = activity.getManager();
+        if (manager != null)
+            manager.removeActivity(activity);
+        
         calendary.removeActivity(name, date, hour);
         System.out.println("La Actividad se ha removido existosamente\n");
     }
@@ -322,7 +322,7 @@ public class Menu
         System.out.println("Actividad: " + activity.getName());
         System.out.println("Fecha: " + activity.getDate());
         System.out.println("Hora: " + activity.getHour());
-        System.out.println("Rut del Manager: " + activity.getManagerRut());
+        System.out.println("Rut del Manager: " + activity.getManager());
         System.out.println("-----------------------------------------");
         System.out.println("Participantes de la Actividad: ");
 
@@ -354,8 +354,9 @@ public class Menu
                 System.out.println("Actividad ingresada no existe!");
         }
         
-        Manager manager = calendary.getManager(activity.getManagerRut());
-        manager.removeActivity(activity);
+        Manager manager = activity.getManager();
+        if (manager != null)
+            manager.removeActivity(activity);
         
         calendary.removeActivity(activity);
         
@@ -366,7 +367,7 @@ public class Menu
         System.out.println("Ingrese nueva hora de la actividad");
         float hour = Float.parseFloat(input.nextLine());
         
-        Activity newActivity = new Activity(activity.getName(), date, hour, activity.getManagerRut());
+        Activity newActivity = new Activity(activity.getName(), date, hour, activity.getManager());
         for (Student student : activity.getStudents())
         {
             newActivity.addStudent(student);
@@ -470,7 +471,7 @@ public class Menu
             if (reportFile.createNewFile())
                 System.out.println("Archivo creado: " + reportFile.getName());
             else
-                System.out.println("El archivo ya existe!");
+                System.out.println("El archivo ya existe!. Se sobreescribira el reporte.");
         }
         catch (IOException e)
         {

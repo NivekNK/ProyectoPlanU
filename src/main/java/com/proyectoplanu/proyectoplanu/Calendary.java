@@ -18,13 +18,9 @@ public class Calendary
     {
         activities.addActivity(activity);
         
-        String managerRut = activity.getManagerRut();
-        Person person = persons.get(managerRut);
-        if (person.getType() == TypeOfPerson.MANAGER)
-        {
-            Manager manager = (Manager)person;
+        Manager manager = activity.getManager();
+        if (manager != null)
             manager.addManagedActivity(activity);
-        }
     }
     
     public ActivityCollection getActivityCollection (){return activities;} 
