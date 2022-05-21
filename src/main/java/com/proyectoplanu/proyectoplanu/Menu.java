@@ -15,7 +15,7 @@ public class Menu
     public Menu()
     {
         input = new Scanner(System.in);
-        actions = new MenuAction[13];
+        actions = new MenuAction[14];
         
         MenuAction addNewActivityAction = (calendary) -> addNewActivity(calendary);
         actions[0] = addNewActivityAction;
@@ -54,6 +54,9 @@ public class Menu
         MenuAction showActivitiesBetweenTwoDatesAction = (calendary) -> showActivitiesBetweenTwoDates(calendary);
         actions[11] = showActivitiesBetweenTwoDatesAction;
         
+        MenuAction showStudentsAttendsMoreThanOneActivityAction = (calendary) -> showStudentsAttendsInMonth(calendary);
+        actions[12] = showStudentsAttendsMoreThanOneActivityAction;
+        
         MenuAction generateReportAction = (calendary) -> {
             try
             {
@@ -64,7 +67,7 @@ public class Menu
                System.out.println("No puede generar el reporte!");
             }
         };
-        actions[12] = generateReportAction;
+        actions[13] = generateReportAction;
     }
     
     public boolean showMenu(Calendary calendary)
@@ -104,7 +107,8 @@ public class Menu
                          + "10.- Modificar Fecha y Hora Actividad\n"
                          + "11.- Mostrar Estudiante que mas asiste a actividades\n"
                          + "12.- Mostrar Actividades entre 2 fechas especificas\n"
-                         + "13.- Generar reporte\n"
+                         + "13.- Mostrar Estudiantes que asistan a una actividad en un mes especifico\n"
+                         + "14.- Generar reporte\n"
                          + " 0.- Salir\n");
                             // TODO: Traspasar Estudiante
                             // TODO: Intercambiar Actividades
@@ -461,6 +465,34 @@ public class Menu
     }
     
     //---------------------------------- OPCION 13 -----------------------------//
+    
+    private void showStudentsAttendsInMonth(Calendary calendary)
+    {
+        ActivityCollection collection = calendary.getActivityCollection();
+        
+        System.out.println("-----------------------------------------");
+        for (Student student : calendary.getStudents())
+        {
+            int count = 0;
+            
+            for (Activity activity : collection.getAllActivities())
+            {
+                if (activity.getStudent(student.getRut()) != null)
+                    count++;
+            }
+            
+            if (count > 1)
+            {
+                System.out.println("Nombre: " + student.getName());
+                System.out.println("Edad: " + student.getAge()); 
+                System.out.println("Año: "+ student.getGrade());
+                System.out.println("Asiste a " + count + " actividades.\n");
+                System.out.println("-----------------------------------------");
+            }
+        }
+    }
+    
+    //---------------------------------- OPCION 14 -----------------------------//
     
     private void generateReport(Calendary calendary) throws IOException
     {

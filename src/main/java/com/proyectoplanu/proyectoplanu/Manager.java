@@ -41,7 +41,7 @@ public class Manager extends Person implements ReportGenerator
     }
 
     @Override
-    public String generateReport() 
+    public String generateReport()
     {
         return "Manager: " + this.getName() + " | " + this.getRut() + "\n";
     }
