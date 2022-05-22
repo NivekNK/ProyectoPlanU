@@ -3,6 +3,7 @@ package com.proyectoplanu.proyectoplanu;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Aun no se realiza ninguna comprobacion de lectura de datos
@@ -468,26 +469,30 @@ public class Menu
     
     private void showStudentsAttendsInMonth(Calendary calendary)
     {
-        ActivityCollection collection = calendary.getActivityCollection();
+        System.out.println("Ingrese mes a revisar: (Ej: 07)");
+        int month = Integer.parseInt(input.nextLine());
         
+        ArrayList<Student> students = new ArrayList();
+        
+        ActivityCollection collection = calendary.getActivityCollection();
         System.out.println("-----------------------------------------");
-        for (Student student : calendary.getStudents())
+        for (Activity activity : collection.getAllActivities())
         {
-            int count = 0;
+            int activityMonth = getDateInfo(activity.getDate().split("/"))[1];
+            if (activityMonth != month)
+                continue;
             
-            for (Activity activity : collection.getAllActivities())
+            for (Student student : activity.getStudents())
             {
-                if (activity.getStudent(student.getRut()) != null)
-                    count++;
-            }
-            
-            if (count > 1)
-            {
-                System.out.println("Nombre: " + student.getName());
-                System.out.println("Edad: " + student.getAge()); 
-                System.out.println("Año: "+ student.getGrade());
-                System.out.println("Asiste a " + count + " actividades.\n");
-                System.out.println("-----------------------------------------");
+                if (!students.contains(student))
+                {
+                    System.out.println("Nombre: " + student.getName());
+                    System.out.println("Edad: " + student.getAge()); 
+                    System.out.println("Año: "+ student.getGrade());
+                    System.out.println("Actividad: " + activity.getName());
+                    System.out.println("-----------------------------------------");
+                    students.add(student);
+                }
             }
         }
     }
