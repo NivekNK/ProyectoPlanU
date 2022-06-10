@@ -49,6 +49,16 @@ public class Activity implements ReportGenerator
         return students.get(rut);
     }
     
+    public static String parseDate(int day, int month, int year)
+    {
+        String date = day <= 9 ? "0" + Integer.toString(day) : Integer.toString(day);
+        date += "/";
+        date += month <= 9 ? "0" + Integer.toString(month) : Integer.toString(month);
+        date += "/" + Integer.toString(year);
+        
+        return date;
+    }
+    
     public String getName() { return name; }
     public String getDate() { return date; }
     public float getHour() { return hour; }

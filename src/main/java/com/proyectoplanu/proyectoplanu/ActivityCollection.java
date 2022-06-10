@@ -23,6 +23,23 @@ public class ActivityCollection implements ReportGenerator
         return activities;
     }
     
+    public ArrayList<Activity> getActivitiesInDate(String date)
+    {
+        ArrayList<Activity> activities = new ArrayList();
+        activitiesByKey.entrySet().forEach(entry -> 
+        {
+            Activity activity = entry.getValue();
+            if (date.equals(activity.getDate()))
+                activities.add(activity);
+        });
+        return activities;
+    }
+    
+    public ArrayList<Activity> getActivitiesInDate(int day, int month, int year)
+    {
+        return getActivitiesInDate(Activity.parseDate(day, month, year));
+    }
+    
     // No es un getter
     public Activity getActivity(String name, String date, float hour)
     {

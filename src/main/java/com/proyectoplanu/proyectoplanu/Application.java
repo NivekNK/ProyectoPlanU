@@ -1,5 +1,6 @@
 package com.proyectoplanu.proyectoplanu;
 
+import com.proyectoplanu.proyectoplanu.gui.GuiMenu;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
@@ -29,7 +30,7 @@ public class Application
         return Instance;
     }
     
-    public void Run()
+    public void run()
     {
         // Test Code
         Random rand = new Random();
@@ -46,11 +47,12 @@ public class Application
             }
         }
         
-        boolean exit = false;
+        GuiMenu.run(calendary);
+        /*boolean exit = false;
         while (exit == false)
         {
             exit = menu.showMenu(calendary);
-        }
+        }*/
     }
     
     private void importManagers() throws FileNotFoundException, IOException

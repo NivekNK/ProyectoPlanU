@@ -105,6 +105,21 @@ public class Calendary
         return currentStudents;
     }
     
+    public ArrayList<Manager> getManagers()
+    {
+        ArrayList<Manager> currentManagers = new ArrayList();
+        persons.entrySet().forEach(entry -> 
+        {
+            Person person = entry.getValue();
+            if (person.getType() == TypeOfPerson.MANAGER)
+            {
+                Manager manager = (Manager)person;
+                currentManagers.add(manager);
+            }
+        });
+        return currentManagers;
+    }
+    
     public void removeActivity(Activity activity)
     {
         activities.removeActivity(activity);
