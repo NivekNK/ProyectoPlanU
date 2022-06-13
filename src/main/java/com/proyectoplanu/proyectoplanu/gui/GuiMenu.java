@@ -7,6 +7,8 @@ import javax.swing.AbstractButton;
 
 public class GuiMenu extends javax.swing.JFrame 
 {
+    private static GuiMenu Instance = null;
+    
     private Calendary calendary;
     
     private int year = 2022;
@@ -945,10 +947,17 @@ public class GuiMenu extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() 
             {
-                GuiMenu menu = new GuiMenu(calendary);
-                menu.setVisible(true);
+                if (Instance == null)
+                    Instance = new GuiMenu(calendary);
+                Instance.setVisible(true);
             }
         });
+    }
+    
+    public static void exit()
+    {
+        Instance.dispose();
+        System.exit(0);
     }
     
     private static void setLookAndFeel()

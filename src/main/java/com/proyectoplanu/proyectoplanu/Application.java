@@ -48,11 +48,14 @@ public class Application
         }
         
         GuiMenu.run(calendary);
-        /*boolean exit = false;
+        boolean exit = false;
         while (exit == false)
         {
             exit = menu.showMenu(calendary);
-        }*/
+        }
+        
+        if (exit)
+            GuiMenu.exit();
     }
     
     private void importManagers() throws FileNotFoundException, IOException
