@@ -97,12 +97,15 @@ public class GuiCurrentDay extends javax.swing.JPanel
         jScrollPane1.setViewportView(activityList);
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText("Actividad");
 
         dateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateLabel.setText("14/07/2022");
 
         hourLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        hourLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hourLabel.setText("19:30");
 
         asistentesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -132,30 +135,25 @@ public class GuiCurrentDay extends javax.swing.JPanel
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nameLabel)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(120, 120, 120)
-                                    .addComponent(dateLabel))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(143, 143, 143)
-                                    .addComponent(hourLabel))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(24, 24, 24)
-                                    .addComponent(asistentesLabel))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(managerRutLabel)
-                                        .addComponent(managerNameLabel)
-                                        .addComponent(managerAgeLabel)))))
-                        .addGap(0, 156, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(asistentesLabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(managerRutLabel)
+                                    .addComponent(managerNameLabel)
+                                    .addComponent(managerAgeLabel))))
+                        .addGap(0, 229, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(asistentes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(hourLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(24, 24, 24)
