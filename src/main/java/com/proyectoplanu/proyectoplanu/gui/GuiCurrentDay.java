@@ -35,6 +35,9 @@ public class GuiCurrentDay extends javax.swing.JPanel
     
     private void setSelectedActivity(int index)
     {
+        if (index < 0 || index > currentActivities.size() - 1)
+            index = 0;
+        
         Activity activity = currentActivities.get(index);
         
         nameLabel.setText(activity.getName());
