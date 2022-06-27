@@ -1,6 +1,7 @@
 package com.proyectoplanu.proyectoplanu.gui;
 
 import com.proyectoplanu.proyectoplanu.*;
+import com.proyectoplanu.proyectoplanu.strategy.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
@@ -16,10 +17,14 @@ public class GuiMenu extends javax.swing.JFrame
    
     private GuiActivity guiActivity;
     
+    private MonthContext monthContext;
+    
     public GuiMenu(Calendary calendary) 
     {
         initComponents();
         this.calendary = calendary;
+        
+        monthContext = new MonthContext(new ThertyDayMonth());
         
         yearSpinner.setValue(year);
         updateCalendary();
@@ -51,6 +56,8 @@ public class GuiMenu extends javax.swing.JFrame
                 button.setText(text);
             }
         }
+        
+        monthContext.setVisibleButtons(day29, day30, day31);
     }
     
     private void dayActionPerformed(int day, javax.swing.JButton button)
@@ -886,6 +893,7 @@ public class GuiMenu extends javax.swing.JFrame
         if (month < 1)
             month = 12;
         monthLabel.setText(getMonth() + " de");
+        updateMonthContext();
         updateCalendary();
     }//GEN-LAST:event_previousMonthActionPerformed
 
@@ -894,6 +902,7 @@ public class GuiMenu extends javax.swing.JFrame
         if (month > 12)
             month = 1;
         monthLabel.setText(getMonth() + " de");
+        updateMonthContext();
         updateCalendary();
     }//GEN-LAST:event_nextMonthActionPerformed
 
@@ -906,6 +915,23 @@ public class GuiMenu extends javax.swing.JFrame
         }
         updateCalendary();
     }//GEN-LAST:event_yearSpinnerStateChanged
+    
+    private void updateMonthContext()
+    {
+        int days = (int)(28 + (month + Math.floor(month/8)) % 2 + 2 % month + 2 * Math.floor(1/month));
+        switch (days)
+        {
+            case 28:
+                monthContext.swapStrategy(new TwentyEightDayMonth());
+                break;
+            case 30:
+                monthContext.swapStrategy(new ThertyDayMonth());
+                break;
+            case 31:
+                monthContext.swapStrategy(new ThertyOneDayMonth());
+                break;
+        }
+    }
     
     private String getMonth()
     {
