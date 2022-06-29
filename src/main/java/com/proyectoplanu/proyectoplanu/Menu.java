@@ -52,7 +52,13 @@ public class Menu
         MenuAction showStudentAttendsTheMostAction = (calendary) -> showStudentAttendsTheMost(calendary);
         actions[10] = showStudentAttendsTheMostAction;
 
-        MenuAction showActivitiesBetweenTwoDatesAction = (calendary) -> showActivitiesBetweenTwoDates(calendary);
+        MenuAction showActivitiesBetweenTwoDatesAction = (calendary) -> {
+            try {
+                showActivitiesBetweenTwoDates(calendary);
+            } catch (ReportException ex) {
+                System.out.println("No puede generar el reporte!");
+            }
+        };
         actions[11] = showActivitiesBetweenTwoDatesAction;
         
         MenuAction showStudentsAttendsMoreThanOneActivityAction = (calendary) -> showStudentsAttendsInMonth(calendary);
@@ -63,7 +69,7 @@ public class Menu
             {
                 generateReport(calendary);
             }
-            catch (IOException ex)
+            catch (IOException | ReportException ex)
             {
                System.out.println("No puede generar el reporte!");
             }
@@ -433,7 +439,7 @@ public class Menu
         return info;
     }
     
-    private void showActivitiesBetweenTwoDates(Calendary calendary)
+    private void showActivitiesBetweenTwoDates(Calendary calendary) throws ReportException
     {
         System.out.println("Ingrese primera fecha (Ej: 01/07/2022):");
         String startDate = input.nextLine();
@@ -499,7 +505,7 @@ public class Menu
     
     //---------------------------------- OPCION 14 -----------------------------//
     
-    private void generateReport(Calendary calendary) throws IOException
+    private void generateReport(Calendary calendary) throws IOException, ReportException
     {
         File reportFile = null;
         try

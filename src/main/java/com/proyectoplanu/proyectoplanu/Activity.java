@@ -78,15 +78,23 @@ public class Activity implements ReportGenerator
     public void setManager(Manager manager) { this.manager = manager; }
 
     @Override
-    public String generateReport() 
+    public String generateReport() throws ReportException 
     {
         String report = "";
-        report += ("Actividad: " + name + "\n");
-        report += "\n";
-        report += ("Fecha: " + date + "\n");
-        report += ("Hora: " + hour + "\n");
         
-        report += manager.generateReport();
+        try 
+        {
+            report += ("Actividad: " + name + "\n");
+            report += "\n";
+            report += ("Fecha: " + date + "\n");
+            report += ("Hora: " + hour + "\n");
+
+            report += manager.generateReport();
+        }
+        catch (Exception err)
+        {
+            throw new ReportException();
+        }
         
         return report;
     }

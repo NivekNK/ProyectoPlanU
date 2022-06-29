@@ -30,7 +30,7 @@ public class Application
         return Instance;
     }
     
-    public void run()
+    public void run() throws StartProjectException
     {
         // Test Code
         Random rand = new Random();
@@ -46,6 +46,9 @@ public class Application
                 }
             }
         }
+        
+        if (Instance == null)
+            throw new StartProjectException();
         
         GuiMenu.run(calendary);
         boolean exit = false;

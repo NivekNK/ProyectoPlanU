@@ -68,7 +68,7 @@ public class ActivityCollection implements ReportGenerator
     }
 
     @Override
-    public String generateReport()
+    public String generateReport() throws ReportException
     {
         String report = "";
         for (Activity activity : this.getAllActivities())

@@ -2,5 +2,5 @@ package com.proyectoplanu.proyectoplanu;
 
 public interface ReportGenerator
 {
-    public String generateReport();
+    public String generateReport() throws ReportException;
 }
